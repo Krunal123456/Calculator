@@ -34,8 +34,8 @@ The intended end-to-end capability is for a representative to open a local Next.
 
 - App: from repository root run `npm run dev`.
   - **Fails when:** the package legitimacy checkpoint has not cleared, the app dependencies are unavailable, or Next.js cannot start the local App Router.
-- Database: provide a development-only `DATABASE_URL` through server environment configuration; apply the Prisma schema with `npm exec -- prisma db push`, then run `npm run db:smoke`.
-  - **Fails when:** no real PostgreSQL endpoint or DATABASE_URL is available, schema push fails, or the write is not read back identically.
+- Database: provide a development-only `DATABASE_URL` through server environment configuration; apply the Prisma schema with `npm exec -- prisma db push`, then run the smoke check directly with `node scripts/db-smoke.mjs` (no package-script registration is required).
+  - **Fails when:** no real PostgreSQL endpoint or DATABASE_URL is available, remote-endpoint TLS/SSL requirements are unconfirmed or encrypted transport is not verified, schema push fails, the script cannot be invoked directly with Node, or the write is not read back identically.
 - Never commit a database credential or expose it to client code. No substitute database counts as success.
 
 ## Pricing and Catalog Contract

@@ -40,7 +40,7 @@ created: "2026-10-25"
 | 01-01-06 | 01 | 1 | PRICE-08 | T-01-01 | Each catalog price cell is explicitly known or missing; no ratio or term inference occurs | unit | `npm exec -- vitest run` | ❌ W0 | ⬜ pending |
 | 01-01-07 | 01 | 1 | PRICE-09 | — | Catalog coverage, golden fixture, scenario outputs, and rounding boundaries are exercised | unit | `npm exec -- vitest run` | ❌ W0 | ⬜ pending |
 | 01-01-08 | 01 | 1 | PRICE-01 | — | App shell builds and a real interactive pricing path calls the shared engine | integration | `npm exec -- next build` | ❌ W0 | ⬜ pending |
-| 01-01-09 | 01 | 1 | PRICE-01 | T-01-02 | Database probe writes a bounded record and reads it back using a real configured PostgreSQL service | integration | `npm run db:smoke` | ❌ W0 | ⬜ pending |
+| 01-01-09 | 01 | 1 | PRICE-01 | T-01-02 | Database probe writes a bounded record and reads it back using a real configured PostgreSQL service | integration | `node scripts/db-smoke.mjs` | ❌ W0 | ⬜ pending |
 
 ## Wave 0 Requirements
 
@@ -55,7 +55,7 @@ created: "2026-10-25"
 | Behavior | Requirement | Why Manual | Test Instructions |
 |----------|-------------|------------|-------------------|
 | Package legitimacy checkpoint | PRICE-01, PRICE-09 | Research flagged recent candidates for Next.js/React, Prisma/PostgreSQL, Vitest/Vite as SUS; the automated legitimacy gate requires human verification before installation. | Inspect the exact package names and selected versions against official package owners/releases; approve or choose verified versions before running install commands. |
-| Real PostgreSQL provisioned endpoint | PRICE-01 | No PostgreSQL endpoint or `DATABASE_URL` was available during research. | Supply a development-only PostgreSQL URL through environment configuration, apply the migration, run `npm run db:smoke`, and confirm a successful write followed by read-back. |
+| Real PostgreSQL provisioned endpoint | PRICE-01 | No PostgreSQL endpoint or `DATABASE_URL` was available during research. | Supply a development-only PostgreSQL URL through environment configuration, apply the migration, and run `node scripts/db-smoke.mjs` to confirm a successful write followed by read-back. For remote endpoints, confirm provider TLS/SSL requirements and verified encrypted transport without weakening TLS; a strictly loopback-only local endpoint is recorded separately. |
 | Commercial signoff | PRICE-03, PRICE-05 | Golden values and several discount, margin, rebate, and price inputs are examples or explicitly unresolved. | Confirm the authoritative price list and policy owner’s approval before treating example inputs as production configuration; keep unconfirmed cells missing. |
 
 ## Validation Sign-Off
