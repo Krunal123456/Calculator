@@ -32,22 +32,22 @@ created: "2026-10-25"
 
 | Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|------------|-----------------|-----------|-------------------|-------------|--------|
-| 01-01-01 | 01 | 1 | PRICE-01 | — | Pure pricing module has no framework, network, or database imports | unit | `npm exec -- vitest run` | ❌ W0 | ⬜ pending |
-| 01-01-02 | 01 | 1 | PRICE-02 | — | Customer unit price uses ROUND_HALF_DOWN before seat multiplication; partner line rounds only at final boundary | unit | `npm exec -- vitest run` | ❌ W0 | ⬜ pending |
-| 01-01-03 | 01 | 1 | PRICE-03 | T-01-01 | Outputs match the golden fixture and all four supplied scenario values | unit | `npm exec -- vitest run` | ❌ W0 | ⬜ pending |
-| 01-01-04 | 01 | 1 | PRICE-05 | T-01-01 | Policy and catalog configuration are explicit inputs; provisional fixtures are not production approvals | contract | `npm exec -- vitest run` | ❌ W0 | ⬜ pending |
-| 01-01-05 | 01 | 1 | PRICE-07 | T-01-01 | Selecting an unpriced SKU/term returns a named missing-price error and no numeric total | unit | `npm exec -- vitest run` | ❌ W0 | ⬜ pending |
-| 01-01-06 | 01 | 1 | PRICE-08 | T-01-01 | Each catalog price cell is explicitly known or missing; no ratio or term inference occurs | unit | `npm exec -- vitest run` | ❌ W0 | ⬜ pending |
-| 01-01-07 | 01 | 1 | PRICE-09 | — | Catalog coverage, golden fixture, scenario outputs, and rounding boundaries are exercised | unit | `npm exec -- vitest run` | ❌ W0 | ⬜ pending |
-| 01-01-08 | 01 | 1 | PRICE-01 | — | App shell builds and a real interactive pricing path calls the shared engine | integration | `npm exec -- next build` | ❌ W0 | ⬜ pending |
+| 01-01-01 | 01 | 1 | PRICE-01 | — | Pure pricing module has no framework, network, or database imports | unit | `npm exec -- vitest run` | ✅ | ✅ passed |
+| 01-01-02 | 01 | 1 | PRICE-02 | — | Customer unit price uses ROUND_HALF_DOWN before seat multiplication; partner line rounds only at final boundary | unit | `npm exec -- vitest run` | ✅ | ✅ passed |
+| 01-01-03 | 01 | 1 | PRICE-03 | T-01-01 | Outputs match the golden fixture and all four supplied scenario values | unit | `npm exec -- vitest run` | ✅ | ✅ passed |
+| 01-01-04 | 01 | 1 | PRICE-05 | T-01-01 | Policy and catalog configuration are explicit inputs; provisional fixtures are not production approvals | contract | `npm exec -- vitest run` | ✅ | ✅ passed |
+| 01-01-05 | 01 | 1 | PRICE-07 | T-01-01 | Selecting an unpriced SKU/term returns a named missing-price error and no numeric total | unit | `npm exec -- vitest run` | ✅ | ✅ passed |
+| 01-01-06 | 01 | 1 | PRICE-08 | T-01-01 | Each catalog price cell is explicitly known or missing; no ratio or term inference occurs | unit | `npm exec -- vitest run` | ✅ | ✅ passed |
+| 01-01-07 | 01 | 1 | PRICE-09 | — | Catalog coverage, golden fixture, scenario outputs, and rounding boundaries are exercised | unit | `npm exec -- vitest run` | ✅ | ✅ passed |
+| 01-01-08 | 01 | 1 | PRICE-01 | — | App shell builds and a real interactive pricing path calls the shared engine | integration | `npm exec -- next build` | ✅ | ✅ passed |
 | 01-01-09 | 01 | 1 | PRICE-01 | T-01-02 | Database probe writes a bounded record and reads it back using a real configured PostgreSQL service | integration | `node scripts/db-smoke.mjs` | ❌ W0 | ⬜ pending |
 
 ## Wave 0 Requirements
 
-- [ ] `package.json`, lockfile, strict TypeScript config, Next.js app shell, and Vitest config — establish only after human verification of dependencies flagged by Phase 1 research.
-- [ ] `src/lib/pricing/` domain module plus fixtures and Vitest tests for PRICE-01 through PRICE-09.
+- [x] `package.json`, lockfile, strict TypeScript config, Next.js app shell, and Vitest config — establish only after human verification of dependencies flagged by Phase 1 research.
+- [x] `src/lib/pricing/` domain module plus fixtures and Vitest tests for PRICE-01 through PRICE-09.
 - [ ] Minimal Prisma schema/migration and server-only database probe; never expose credentials in client code.
-- [ ] One manual-input UI path wired to the pricing module, separate from the future multi-step quote wizard.
+- [x] One manual-input UI path wired to the pricing module, separate from the future multi-step quote wizard.
 - [ ] Operator-provided PostgreSQL endpoint and `DATABASE_URL` — required to complete real database read/write validation; do not replace with an in-memory database.
 
 ## Manual-Only Verifications
@@ -66,4 +66,4 @@ created: "2026-10-25"
 - [ ] No watch-mode flags are used in verification commands.
 - [ ] `nyquist_compliant: true` set in frontmatter after implementation and validation.
 
-**Approval:** Pending
+**Approval:** Plan 01-01 validations passed; phase sign-off awaits Plan 01-02 PostgreSQL read/write/read-back.
