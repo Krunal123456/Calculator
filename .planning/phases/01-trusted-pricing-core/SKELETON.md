@@ -3,9 +3,11 @@
 **Phase:** 1  
 **Generated:** 2026-10-25
 
-## Capability Proven End-to-End
+## Target Capability — Not Yet Verified
 
-A representative can open a local Next.js page, enter explicit sample price, discount, and seat inputs, see the result from the shared pure Decimal pricing module, and use a separate development-only Prisma route to write a bounded probe record to PostgreSQL and read the same record back.
+**Status:** Planning contract only. The Walking Skeleton is incomplete until Plan `01-01` passes the production pricing/UI checks and dependent Plan `01-02` passes an actual PostgreSQL write/read-back against an operator-controlled service. The package legitimacy checkpoint and PostgreSQL/DATABASE_URL setup have not been completed. Do not report this capability as implemented or verified before both plans pass.
+
+The intended end-to-end capability is for a representative to open a local Next.js page, enter explicit sample price, discount, and seat inputs, see the result from the shared pure Decimal pricing module, and use a separate development-only Prisma route to write a bounded probe record to PostgreSQL and read the same record back. Plan `01-01` delivers only the pricing/UI slice; Plan `01-02` is a required, blocking dependency for the complete outcome.
 
 ## Architectural Decisions
 
@@ -43,7 +45,7 @@ A representative can open a local Next.js page, enter explicit sample price, dis
 - Partner line calculations keep the per-seat amount unrounded and round only at the final line boundary; the not-explicitly-specified final partner rounding details remain flagged for confirmation.
 - Each listed SKU × term × currency cell remains explicitly known or missing. Missing selections block only calculations that select them and report the SKU and term.
 - Source-listed USD monthly prices are Business Starter Flexible $8.40 / fixed 1Y $7.00; Business Standard Flexible $16.80 / fixed 1Y $14.00; Business Plus Flexible $26.40 / fixed 1Y $22.00. Their 2Y/3Y cells remain explicitly missing: the source's shared fixed-price example is an unresolved assumption, not permission to copy a 1Y value into another term.
-- Gemini Business USD fixed price is $21.00 as seen in sample screens; Flexible remains missing, and fixed 2Y/3Y parity with 1Y remains unresolved. Enterprise, Frontline, Archived User, Google Voice, Assured Controls, and Gemini Enterprise prices remain missing where the source marks TODO.
+- Gemini Business USD fixed 1Y sample price is $21.00 as seen in sample screens; Flexible and fixed 2Y/3Y cells remain missing. Any 2Y/3Y parity with 1Y remains unresolved. Enterprise, Frontline, Archived User, Google Voice, Assured Controls, and Gemini Enterprise prices remain missing where the source marks TODO.
 - Every EUR, GBP, and INR price cell remains missing; formatting support is not evidence of catalog pricing or conversion.
 - Preserve the complete source SKU inventory: Business Starter/Standard/Plus; Enterprise Starter/Standard/Plus; Frontline Worker Starter/Standard/Plus; Workspace Business Starter/Standard/Plus Archived User; Workspace Enterprise Standard/Plus Archived User; Google Voice Starter/Standard/Plus; Assured Controls Plus; Gemini Business; Gemini Enterprise Standard/Plus. `.planning/phases/01-trusted-pricing-core/01-01-PLAN.md` contains the row-by-row USD term register and the all-term non-USD missing-state rule.
 - The golden-fixture values and all sample discount/margin/rebate amounts are regression inputs, not approved production policy. Catalog known/missing state remains distinct from owner-approval state.
