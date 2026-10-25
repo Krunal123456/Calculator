@@ -132,6 +132,12 @@ function parseDecimalInput(
   return parsed.isFinite() ? parsed : null;
 }
 
+function isValidPercentage(
+  value: InstanceType<typeof PricingDecimal> | null,
+): value is InstanceType<typeof PricingDecimal> {
+  return Boolean(value && !value.isNegative() && value.lessThanOrEqualTo(100));
+}
+
 function formatMoney(value: InstanceType<typeof PricingDecimal>): string {
   return value.toFixed(2);
 }
@@ -163,12 +169,11 @@ export function calculateCustomerPrice(
     return { status: "error", message: "Enter valid numeric values." };
   }
 
-  if (
-    !listPrice.isPositive() ||
-    !Number.isSafeInteger(input.seats) ||
-    input.seats <= 0
-  ) {
+  if (!listPrice.isPositive() || !Number.isSafeInteger(input.seats) || input.seats <= 0) {
     return { status: "error", message: "Price and seat count must be positive." };
+  }
+  if (!isValidPercentage(discountPercent)) {
+    return { status: "error", message: "Discount must be between 0% and 100%." };
   }
 
   const unitPrice = customerUnitPrice(listPrice, discountPercent);
@@ -193,8 +198,8 @@ export function calculateQuote(input: PricingInput): QuoteCalculationResult {
   const newCustomerPercent = parseDecimalInput(input.rebates.newCustomerPercent);
   const geminiDealPercent = parseDecimalInput(input.rebates.geminiDealPercent);
   if (
-    !newCustomerPercent ||
-    !geminiDealPercent ||
+    !isValidPercentage(newCustomerPercent) ||
+    !isValidPercentage(geminiDealPercent) ||
     !Number.isSafeInteger(input.rebates.minimumWorkspaceSeats) ||
     input.rebates.minimumWorkspaceSeats < 0
   ) {
@@ -230,9 +235,9 @@ export function calculateQuote(input: PricingInput): QuoteCalculationResult {
 
     if (
       !listPrice?.isPositive() ||
-      !partnerDiscount ||
-      discounts.some((discount) => discount === null) ||
-      (line.workspaceMaxApproved !== null && !maximum)
+      !isValidPercentage(partnerDiscount) ||
+      discounts.some((discount) => !isValidPercentage(discount)) ||
+      (line.workspaceMaxApproved !== null && !isValidPercentage(maximum))
     ) {
       return invalidQuote(`Invalid pricing input for ${line.sku}.`);
     }
@@ -323,10 +328,10 @@ export function calculateQuote(input: PricingInput): QuoteCalculationResult {
       !attachRate ||
       attachRate.isNegative() ||
       attachRate.greaterThan(1) ||
-      !bundleDiscount ||
-      !googlerDiscount ||
-      !partnerDiscount ||
-      (gemini.geminiMaxApproved !== null && !maximum) ||
+      !isValidPercentage(bundleDiscount) ||
+      !isValidPercentage(googlerDiscount) ||
+      !isValidPercentage(partnerDiscount) ||
+      (gemini.geminiMaxApproved !== null && !isValidPercentage(maximum)) ||
       (
         gemini.requestedSeats !== undefined &&
         gemini.requestedSeats !== null &&
