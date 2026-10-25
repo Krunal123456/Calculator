@@ -18,15 +18,15 @@
 
 ### Pricing and Policy
 
-- [ ] **PRICE-01**: A framework-independent pricing module uses Decimal arithmetic for all monetary and percentage calculations.
-- [ ] **PRICE-02**: Customer per-seat prices round to two decimal places using ROUND_HALF_DOWN before multiplying by seats; partner line totals follow the specified unrounded-per-seat calculation and final rounding.
-- [ ] **PRICE-03**: The pricing engine calculates Workspace annual and averaged monthly totals, Gemini compounded discounts and seats, customer investment, partner costs, attainment, and eligible rebates according to the supplied rules.
+- [x] **PRICE-01**: A framework-independent pricing module uses Decimal arithmetic for all monetary and percentage calculations.
+- [x] **PRICE-02**: Customer per-seat prices round to two decimal places using ROUND_HALF_DOWN before multiplying by seats; partner line totals follow the specified unrounded-per-seat calculation and final rounding.
+- [x] **PRICE-03**: The pricing engine calculates Workspace annual and averaged monthly totals, Gemini compounded discounts and seats, customer investment, partner costs, attainment, and eligible rebates according to the supplied rules.
 - [ ] **PRICE-04**: The 100%, 50%, 25%, and no-Gemini scenarios use exact configured defaults; unsupported attach rates do not interpolate defaults and require manual discount entry.
-- [ ] **PRICE-05**: Discount defaults, approval caps, partner margins, rebate percentages, and SKU eligibility are supplied by configuration rather than UI components.
+- [x] **PRICE-05**: Discount defaults, approval caps, partner margins, rebate percentages, and SKU eligibility are supplied by configuration rather than UI components.
 - [ ] **PRICE-06**: Discounts exceeding configured approval caps produce visible warnings in the scenario editor and proposal preview without blocking quote creation.
-- [ ] **PRICE-07**: Selecting a SKU/term with an unknown catalog price blocks quote creation and identifies the missing SKU and term; unknown prices are never represented as zero or NaN.
-- [ ] **PRICE-08**: The catalog stores separate explicit flexible and fixed-term prices and does not infer one term's price from another term or a percentage ratio.
-- [ ] **PRICE-09**: Unit tests cover catalog completeness as explicit known-or-missing entries, the supplied golden fixture, and the scenario outputs and rounding edge cases.
+- [x] **PRICE-07**: Selecting a SKU/term with an unknown catalog price blocks quote creation and identifies the missing SKU and term; unknown prices are never represented as zero or NaN.
+- [x] **PRICE-08**: The catalog stores separate explicit flexible and fixed-term prices and does not infer one term's price from another term or a percentage ratio.
+- [x] **PRICE-09**: Unit tests cover catalog completeness as explicit known-or-missing entries, the supplied golden fixture, and the scenario outputs and rounding edge cases.
 - [ ] **PRICE-10**: Customer proposal amounts can be formatted for USD, EUR, GBP, and INR without treating display support as evidence of non-USD catalog prices.
 
 ### Quotes, Identity, and Sharing

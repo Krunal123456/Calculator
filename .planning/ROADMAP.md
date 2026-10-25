@@ -21,7 +21,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 ## Phase Details
 
 ### Phase 1: Trusted Pricing Core
-**Goal**: Representatives get reproducible customer and partner pricing from explicit catalog and policy inputs, without totals based on unknown values.
+**Goal**: As a sales representative, I want to calculate reproducible customer and partner pricing from explicit catalog and policy inputs, so that I can prepare trustworthy quotes without guessing at missing prices.
 **Mode:** mvp
 **Depends on**: Nothing (first phase)
 **Requirements**: PRICE-01, PRICE-02, PRICE-03, PRICE-05, PRICE-07, PRICE-08, PRICE-09
@@ -30,7 +30,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Representatives can obtain the specified Workspace/Gemini annual and averaged monthly totals, scenario seat counts, attainment, and eligible rebates from the pricing contract, using only policy values confirmed and configured for those calculations.
   3. Every catalog SKU/term/currency combination is explicitly known or missing; selecting a missing price prevents a quote total and identifies the SKU and term rather than returning zero, NaN, or an inferred price.
   4. Catalog and pricing tests verify known-versus-missing coverage, the golden fixture, scenario outputs, and rounding edges.
-**Plans**: TBD
+**Plans**: 2 (Plan 01-01 complete; Plan 01-02 pending its PostgreSQL prerequisite)
 **Decisions / dependencies**: Obtain authoritative prices and applicable policy inputs before enabling affected calculations. Keep unconfirmed prices, margins, rebates, and policy values explicitly unresolved; never estimate or derive them from another term, currency, or scenario.
 
 ### Phase 2: Authenticated Quote Wizard & Scenario Preview
