@@ -73,20 +73,44 @@ These are unresolved commercial inputs, not values the implementation may invent
 
 ## Traceability
 
-Phase mapping is populated during roadmap creation.
+Phase mappings are assigned in `.planning/ROADMAP.md`; every v1 requirement is mapped to exactly one phase.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| WIZ-01–WIZ-08 | Pending | Pending |
-| PRICE-01–PRICE-10 | Pending | Pending |
-| QUOTE-01–QUOTE-06 | Pending | Pending |
-| DEL-01–DEL-04 | Pending | Pending |
+| WIZ-01 | Phase 2 | Pending |
+| WIZ-02 | Phase 2 | Pending |
+| WIZ-03 | Phase 2 | Pending |
+| WIZ-04 | Phase 2 | Pending |
+| WIZ-05 | Phase 2 | Pending |
+| WIZ-06 | Phase 2 | Pending |
+| WIZ-07 | Phase 2 | Pending |
+| WIZ-08 | Phase 2 | Pending |
+| PRICE-01 | Phase 1 | Pending |
+| PRICE-02 | Phase 1 | Pending |
+| PRICE-03 | Phase 1 | Pending |
+| PRICE-04 | Phase 2 | Pending |
+| PRICE-05 | Phase 1 | Pending |
+| PRICE-06 | Phase 2 | Pending |
+| PRICE-07 | Phase 1 | Pending |
+| PRICE-08 | Phase 1 | Pending |
+| PRICE-09 | Phase 1 | Pending |
+| PRICE-10 | Phase 2 | Pending |
+| QUOTE-01 | Phase 3 | Pending |
+| QUOTE-02 | Phase 3 | Pending |
+| QUOTE-03 | Phase 3 | Pending |
+| QUOTE-04 | Phase 4 | Pending |
+| QUOTE-05 | Phase 4 | Pending |
+| QUOTE-06 | Phase 4 | Pending |
+| DEL-01 | Phase 5 | Pending |
+| DEL-02 | Phase 2 | Pending |
+| DEL-03 | Phase 5 | Pending |
+| DEL-04 | Phase 5 | Pending |
 
 **Coverage:**
 - v1 requirements: 28 total
-- Mapped to phases: 0
-- Unmapped: 28 ⚠️
+- Mapped to phases: 28
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-10-25*
-*Last updated: 2026-10-25 after initial definition*
+*Last updated: 2026-10-25 after roadmap creation*
